@@ -14,12 +14,19 @@ const newItemHighPriority = ref(false);
 
 <template>
   <h1>{{ header }}</h1>
+  <form class="add-item-form" @submit.prevent="items.push({id: items.length + 1, label: newItem})">
+
   <input v-model="newItem" type="text" placeholder="Add an item">
   <label>
     <input type="checkbox" v-model="newItemHighPriority">
     High priority
   </label>
-  
+  <button class="btn btn-primary" type="submit" >
+    Save Item
+  </button>
+
+  </form>
+
   <ul>
     <li v-for="({id, label}) in items" :key="id">
       {{ label }}
