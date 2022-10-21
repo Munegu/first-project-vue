@@ -2,19 +2,37 @@
 import { ref } from 'vue'
 
 const header = ref('Shopping List App');
+const editing = ref(false);
 const items = ref([
-  {id: 1, label: '10 party hats'},
-  {id: 2, label: '2 board games'},
-  {id: 3, label: '20 cups'}
+  // {id: 1, label: '10 party hats'},
+  // {id: 2, label: '2 board games'},
+  // {id: 3, label: '20 cups'}
 ]);
 const newItem = ref("");
 const newItemHighPriority = ref(false);
+const saveItem= () => {
+  items.value.push({id: items.value.length + 1, label: newItem.value});
+  newItem.value = "";
+}
+const doEdit = () => {
+  editing.value = !editing.value;
+  newItem.value = "";
+}
 // const iceCreamFlavors = ref([]);
 </script>
 
 <template>
-  <h1>{{ header }}</h1>
-  <form class="add-item-form" @submit.prevent="items.push({id: items.length + 1, label: newItem})">
+  <div class="header">
+    <h1>{{ header }}</h1>
+    <button class="btn btn-cancel" v-if="editing" @click="doEdit">
+      Cancel
+    </button>
+    <button class="btn btn-primary" v-else @click="doEdit">
+      Add
+    </button>
+
+  </div>
+  <form class="add-item-form" v-if="editing" @submit.prevent="saveItem">
 
   <input v-model="newItem" type="text" placeholder="Add an item">
   <label>
@@ -32,4 +50,6 @@ const newItemHighPriority = ref(false);
       {{ label }}
     </li>
   </ul>
+
+  <p v-if="0 === items.length">Nothing to see here</p>
 </template>
