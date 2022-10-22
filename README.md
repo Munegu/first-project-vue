@@ -1,24 +1,6 @@
-# first-project
+# My first vue project
 
-## Project setup
-```
-yarn install
-```
+[![Netlify Status](https://api.netlify.com/api/v1/badges/8adb0b07-a895-4135-b829-9ca27503c05f/deploy-status)](https://app.netlify.com/sites/munegu-discover-vue/deploys)
 
-### Compiles and hot-reloads for development
-```
-yarn serve
-```
 
-### Compiles and minifies for production
-```
-yarn build
-```
-
-### Lints and fixes files
-```
-yarn lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+You can see the result [here](https://munegu-discover-vue.netlify.app)
